@@ -18,14 +18,14 @@ const userSchema = Joi.object({
 // REGISTRATION
 router.post('/register', async (req, res) => {
   let userInputs = req.body;
-  console.log(userInputs);
+
   try {
     userInputs = await userSchema.validateAsync(userInputs);
   } catch (err) {
     return res.status(400).send({ err: 'Incorrect data provided' });
   }
   const encryptedPassword = bcrypt.hashSync(userInputs.password);
-  mysql.createConnection(dbConfig).then((data) => console.log(data));
+
   try {
     const con = await mysql.createConnection(dbConfig);
     const [data] = await con.execute(

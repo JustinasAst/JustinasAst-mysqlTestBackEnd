@@ -28,7 +28,6 @@ router.post('/accounts', isLoggedIn, async (req, res) => {
 });
 //GET: /accounts/ - paduoda visas vartotojo grupes (JOIN su groups). ID pasiima iš token.
 router.get('/accounts', isLoggedIn, async (req, res) => {
-  console.log(req.user.id);
   const userId = req.user.id;
   const query = ` SELECT accounts.user_id, accounts.group_id, groups1.name FROM accounts LEFT JOIN groups1  ON accounts.group_id = groups1.id WHERE accounts.user_id = ${mysql.escape(
     userId,

@@ -15,4 +15,4 @@ app.get('/', (req, res) => {
 app.all('*', (req, res) => {
   res.status(404).send({ msq: 'Page not exsist' });
 });
-app.listen(port, () => console.log('Server is running on port 3000'));
+app.listen(port, () => 'Server is running on port 3000');
